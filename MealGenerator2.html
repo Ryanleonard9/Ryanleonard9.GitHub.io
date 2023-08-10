@@ -81,6 +81,9 @@
         }
         mealPlan += '<hr>';
       }
+      
+      const generatedMeals = document.getElementById('generatedMeals');
+      generatedMeals.innerHTML = mealPlan;
     }
 
     function generateRandomMeal() {
