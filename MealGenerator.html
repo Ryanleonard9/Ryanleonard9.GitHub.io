@@ -75,5 +75,116 @@ console.log("Five-Day Meal Plan:", fiveDayMealPlan);
       outputDiv.innerHTML = planOutput;
     });
   </script>
+
+<br>
+<hr>
+<br>
+  
+
+
+  <h1>Meal Generator 2</h1>
+
+  <button id="singleMealButton">Generate Single Random Meal</button>
+  <button id="fiveDayPlanButton">Generate Five-Day Meal Plan</button>
+  <button id="singleCuisineMealButton">Generate Single Random Meal by Cuisine</button>
+  <button id="weeklyCuisinePlanButton">Generate Weekly Meal Plan by Cuisine</button>
+
+  <div id="output"></div>
+
+  <script>
+    // Your JavaScript code here
+    // Make sure to include the JavaScript code I provided in the previous response
+const mealsByCuisine = {
+  mexican: {
+    breakfast: ["Chilaquiles", "Huevos Rancheros"],
+    lunch: ["Tacos al Pastor", "Guacamole"],
+    dinner: ["Enchiladas", "Carne Asada"],
+    snacks: ["Chips and Salsa", "Elote"]
+  },
+  chinese: {
+    breakfast: ["Congee", "Soy Milk and Fried Dough Sticks"],
+    lunch: ["Dim Sum", "Hot and Sour Soup"],
+    dinner: ["Sweet and Sour Chicken", "Beef with Broccoli"],
+    snacks: ["Spring Rolls", "Shumai"]
+  },
+  italian: {
+    breakfast: ["Espresso", "Cornetto"],
+    lunch: ["Margherita Pizza", "Caprese Salad"],
+    dinner: ["Spaghetti Carbonara", "Chicken Piccata"],
+    snacks: ["Bruschetta", "Arancini"]
+  }
+};
+
+// Function to generate a random meal from a cuisine and category
+function generateRandomMeal(cuisine, category) {
+  const meals = mealsByCuisine[cuisine][category];
+  const randomIndex = Math.floor(Math.random() * meals.length);
+  return meals[randomIndex];
+}
+
+// Function to generate a meal plan for a specific cuisine
+function generateMealPlan(cuisine, days) {
+  const mealPlan = {};
+  const categories = ["breakfast", "lunch", "dinner", "snacks"];
+
+  for (let i = 0; i < days; i++) {
+    mealPlan[`Day ${i + 1}`] = {};
+    for (const category of categories) {
+      mealPlan[`Day ${i + 1}`][category] = generateRandomMeal(cuisine, category);
+    }
+  }
+
+  return mealPlan;
+}
+
+// Example usage
+console.log("Random Single Meal:", generateRandomMeal("mexican", "dinner"));
+console.log("Five-Day Meal Plan:", generateMealPlan("chinese", 5));
+    const singleMealButton = document.getElementById("singleMealButton");
+    const fiveDayPlanButton = document.getElementById("fiveDayPlanButton");
+    const singleCuisineMealButton = document.getElementById("singleCuisineMealButton");
+    const weeklyCuisinePlanButton = document.getElementById("weeklyCuisinePlanButton");
+    const outputDiv = document.getElementById("output");
+
+    singleMealButton.addEventListener("click", function() {
+      const randomMeal = generateRandomMeal("mexican", "dinner");
+      outputDiv.textContent = "Random Single Meal: " + randomMeal;
+    });
+
+    fiveDayPlanButton.addEventListener("click", function() {
+      const mealPlan = generateMealPlan("chinese", 5);
+      let planOutput = "Five-Day Meal Plan:<br>";
+      for (const day in mealPlan) {
+        planOutput += `<strong>${day}:</strong><br>`;
+        for (const category in mealPlan[day]) {
+          planOutput += `${category}: ${mealPlan[day][category]}<br>`;
+        }
+        planOutput += "<br>";
+      }
+      outputDiv.innerHTML = planOutput;
+    });
+
+    singleCuisineMealButton.addEventListener("click", function() {
+      const cuisines = Object.keys(mealsByCuisine);
+      const randomCuisine = cuisines[Math.floor(Math.random() * cuisines.length)];
+      const randomMeal = generateRandomMeal(randomCuisine, "dinner");
+      outputDiv.textContent = `Random ${randomCuisine} Dinner: ${randomMeal}`;
+    });
+
+    weeklyCuisinePlanButton.addEventListener("click", function() {
+      const cuisines = Object.keys(mealsByCuisine);
+      const randomCuisine = cuisines[Math.floor(Math.random() * cuisines.length)];
+      const mealPlan = generateMealPlan(randomCuisine, 7);
+      let planOutput = `Weekly ${randomCuisine} Meal Plan:<br>`;
+      for (const day in mealPlan) {
+        planOutput += `<strong>${day}:</strong><br>`;
+        for (const category in mealPlan[day]) {
+          planOutput += `${category}: ${mealPlan[day][category]}<br>`;
+        }
+        planOutput += "<br>";
+      }
+      outputDiv.innerHTML = planOutput;
+    });
+  </script>
 </body>
 </html>
