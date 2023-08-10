@@ -27,6 +27,7 @@
 
   <button onclick="generateSingleMeal()">Generate Single Meal</button>
   <button onclick="generateMealPlan(5)">Generate 5 Days of Meals</button>
+  <button onclick="generateRandomMeal()">Generate Random Meal</button>
 
   <h2>Generated Meals:</h2>
   <div id="generatedMeals"></div>
@@ -76,6 +77,15 @@
       }
       const generatedMeals = document.getElementById('generatedMeals');
       generatedMeals.innerHTML = mealPlan;
+    }
+
+    function generateRandomMeal() {
+      const selectedMealType = document.getElementById('mealType').value;
+      const allCuisines = Object.keys(cuisineTypes);
+      const randomCuisine = getRandomItem(allCuisines);
+      const randomMeal = getRandomItem(cuisineTypes[randomCuisine][selectedMealType]);
+      const generatedMeals = document.getElementById('generatedMeals');
+      generatedMeals.innerHTML = `For ${selectedMealType} in ${randomCuisine} cuisine, you can have: ${randomMeal}`;
     }
   </script>
 </body>
