@@ -33,16 +33,25 @@
 
   <script>
     const cuisineTypes = {
-      mexican: {
-        // ... (rest of the cuisine data)
-      },
-      chinese: {
-        // ... (rest of the cuisine data)
-      },
-      italian: {
-        // ... (rest of the cuisine data)
-      }
-    };
+  mexican: {
+    breakfast: ["Huevos Rancheros", "Chilaquiles", "Breakfast Burrito"],
+    lunch: ["Taco Salad", "Chicken Enchiladas", "Quesadillas"],
+    dinner: ["Tacos", "Burritos", "Fajitas"],
+    snacks: ["Guacamole", "Salsa and Chips", "Mexican Street Corn"]
+  },
+  chinese: {
+    breakfast: ["Scallion Pancakes", "Congee", "Chinese Donut"],
+    lunch: ["Dumplings", "Spring Rolls", "Hot and Sour Soup"],
+    dinner: ["Kung Pao Chicken", "Sweet and Sour Pork", "Mapo Tofu"],
+    snacks: ["Egg Rolls", "Sesame Noodles", "Steamed Buns"]
+  },
+  italian: {
+    breakfast: ["Frittata", "Italian Omelette", "Croissant with Prosciutto"],
+    lunch: ["Caprese Salad", "Margherita Pizza", "Pasta Carbonara"],
+    dinner: ["Lasagna", "Chicken Parmesan", "Risotto"],
+    snacks: ["Bruschetta", "Stuffed Mushrooms", "Focaccia Bread"]
+  }
+};
 
     function getRandomItem(array) {
       const randomIndex = Math.floor(Math.random() * array.length);
