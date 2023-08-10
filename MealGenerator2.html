@@ -89,14 +89,21 @@
       generatedMeals.innerHTML = `For ${selectedMealType} in ${randomCuisine} cuisine, you can have: ${randomMeal}`;
     }
 
-    function generateRandomMealPlan() {
+      function generateRandomMealPlan() {
+      const allCuisines = Object.keys(cuisineTypes);
       const allMealTypes = Object.keys(cuisineTypes[Object.keys(cuisineTypes)[0]]);
       let mealPlan = '';
-      for (let i = 0; i < allMealTypes.length; i++) {
-        const randomCuisine = getRandomItem(Object.keys(cuisineTypes));
-        const randomMeal = getRandomItem(cuisineTypes[randomCuisine][allMealTypes[i]]);
-        mealPlan += `Day ${i + 1}: For ${allMealTypes[i]} in ${randomCuisine} cuisine, you can have: ${randomMeal}<br>`;
+      
+      for (let day = 1; day <= 5; day++) {
+        mealPlan += `<h3>Day ${day}</h3>`;
+        for (let i = 0; i < allMealTypes.length; i++) {
+          const randomCuisine = getRandomItem(allCuisines);
+          const randomMeal = getRandomItem(cuisineTypes[randomCuisine][allMealTypes[i]]);
+          mealPlan += `<p>${allMealTypes[i]} in ${randomCuisine} cuisine: ${randomMeal}</p>`;
+        }
+        mealPlan += '<hr>';
       }
+      
       const generatedMeals = document.getElementById('generatedMeals');
       generatedMeals.innerHTML = mealPlan;
     }
