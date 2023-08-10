@@ -70,15 +70,17 @@
 
     function generateMealPlan(numDays) {
       const selectedCuisine = document.getElementById('cuisine').value;
-      const selectedMealType = document.getElementById('mealType').value;
+      const allMealTypes = Object.keys(cuisineTypes[selectedCuisine]);
       let mealPlan = '';
-      for (let i = 0; i < numDays; i++) {
-        const randomMeal = getRandomItem(cuisineTypes[selectedCuisine][selectedMealType]);
-        mealPlan += `Day ${i + 1}: For ${selectedMealType} in ${selectedCuisine} cuisine, you can have: ${randomMeal}<br>`;
+      
+      for (let day = 1; day <= numDays; day++) {
+        mealPlan += `<h3>Day ${day}</h3>`;
+        for (let i = 0; i < allMealTypes.length; i++) {
+          const randomMeal = getRandomItem(cuisineTypes[selectedCuisine][allMealTypes[i]]);
+          mealPlan += `<p>${allMealTypes[i]}: ${randomMeal}</p>`;
+        }
+        mealPlan += '<hr>';
       }
-      const generatedMeals = document.getElementById('generatedMeals');
-      generatedMeals.innerHTML = mealPlan;
-    }
 
     function generateRandomMeal() {
       const selectedMealType = document.getElementById('mealType').value;
