@@ -75,5 +75,74 @@ console.log("Five-Day Meal Plan:", fiveDayMealPlan);
       outputDiv.innerHTML = planOutput;
     });
   </script>
+
+  <br>
+  <hr>
+  <br>
+  <h1>Meal Generator</h1>
+
+  <label for="cuisine">Select Cuisine:</label>
+  <select id="cuisine">
+    <option value="mexican">Mexican</option>
+    <option value="chinese">Chinese</option>
+    <option value="italian">Italian</option>
+  </select>
+
+  <br><br>
+
+  <label for="mealType">Select Meal Type:</label>
+  <select id="mealType">
+    <option value="breakfast">Breakfast</option>
+    <option value="lunch">Lunch</option>
+    <option value="dinner">Dinner</option>
+    <option value="snacks">Snacks</option>
+  </select>
+
+  <br><br>
+
+  <button onclick="generateSingleMeal()">Generate Single Meal</button>
+  <button onclick="generateMealPlan(5)">Generate 5 Days of Meals</button>
+
+  <h2>Generated Meals:</h2>
+  <div id="generatedMeals"></div>
+
+  <script>
+    const cuisineTypes = {
+      mexican: {
+        // ... (rest of the cuisine data)
+      },
+      chinese: {
+        // ... (rest of the cuisine data)
+      },
+      italian: {
+        // ... (rest of the cuisine data)
+      }
+    };
+
+    function getRandomItem(array) {
+      const randomIndex = Math.floor(Math.random() * array.length);
+      return array[randomIndex];
+    }
+
+    function generateSingleMeal() {
+      const selectedCuisine = document.getElementById('cuisine').value;
+      const selectedMealType = document.getElementById('mealType').value;
+      const randomMeal = getRandomItem(cuisineTypes[selectedCuisine][selectedMealType]);
+      const generatedMeals = document.getElementById('generatedMeals');
+      generatedMeals.innerHTML = `For ${selectedMealType} in ${selectedCuisine} cuisine, you can have: ${randomMeal}`;
+    }
+
+    function generateMealPlan(numDays) {
+      const selectedCuisine = document.getElementById('cuisine').value;
+      const selectedMealType = document.getElementById('mealType').value;
+      let mealPlan = '';
+      for (let i = 0; i < numDays; i++) {
+        const randomMeal = getRandomItem(cuisineTypes[selectedCuisine][selectedMealType]);
+        mealPlan += `Day ${i + 1}: For ${selectedMealType} in ${selectedCuisine} cuisine, you can have: ${randomMeal}<br>`;
+      }
+      const generatedMeals = document.getElementById('generatedMeals');
+      generatedMeals.innerHTML = mealPlan;
+    }
+  </script>
 </body>
 </html>
