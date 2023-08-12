@@ -16,16 +16,6 @@ button {
   border-radius: 5px;
 }
 
-button:active {
-background-color: Black;
-color: white;
-}
-
-button:hover {
-  background-color: White;
-  color: black;
-}
-
 /* Style for output section */
 #output {
   margin-top: 20px;
