@@ -14,13 +14,16 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  border-color: white;
+}
+
+button:active {
+background-color: Black;
+color: white;
 }
 
 button:hover {
   background-color: White;
   color: black;
-  border-color: black;
 }
 
 /* Style for output section */
