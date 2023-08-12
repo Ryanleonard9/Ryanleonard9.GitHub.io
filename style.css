@@ -1,7 +1,7 @@
 /* Style for page */
 
-container {
-  background-color: #FF0000;
+body {
+  background-color: #A7C7E7;
 }
 
 /* Style for buttons */
@@ -9,7 +9,7 @@ button {
   padding: 10px 20px;
   margin: 10px;
   font-size: 16px;
-  background-color: #4CAF50;
+  background-color: black;
   color: white;
   border: none;
   cursor: pointer;
